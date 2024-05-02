@@ -1,0 +1,253 @@
+3)a)Write a program to create Person class with fields: first name and last name
+and getter setter
+Program:
+class Person
+{
+String FirstName;
+String LastName;
+public Person(String FirstName, String LastName)
+{
+this.FirstName = FirstName;
+this.LastName = LastName;
+}
+public String getFirstName()
+{
+return FirstName;
+}
+public String getLastName()
+{
+return LastName;
+}
+public void setFirstName(String FirstName)
+{
+this.FirstName = FirstName;
+}
+public void setLastName(String LastName)
+{
+this.LastName = LastName;
+}
+public String toString()
+{
+return "Name : "+FirstName+" "+LastName;
+}
+}
+public class Assgn3a
+{
+public static void main(String args[])
+{
+Person p1 = new Person("Kadambari","Patil");
+
+System.out.println(p1);
+p1.setFirstName("Aditi");
+System.out.println(p1);
+}
+}
+Output:
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ cd /home/opps-17/Desktop/UEC2022303
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ javac Assgn3a.java
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ java Assgn3a
+Name : Kadambari Patil
+Name : Aditi Patil
+
+b)Modify (a) to make immutable
+Program:
+final class Person
+{
+private final String FirstName;
+private final String LastName;
+public Person(String FirstName, String LastName)
+{
+this.FirstName = FirstName;
+this.LastName = LastName;
+}
+public String getFirstName()
+{
+return FirstName;
+}
+public String getLastName()
+{
+return LastName;
+}
+
+public String toString()
+{
+return "Name : "+FirstName+" "+LastName;
+}
+}
+public class Assgn3b
+{
+public static void main(String args[])
+{
+Person p1 = new Person("Kadambari","Patil");
+System.out.println(p1);
+}
+
+}
+Output:
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ javac Assgn3b.java
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ java Assgn3b
+Name : Kadambari Patil
+
+c)In Person class, add a field of type Address, which has field as city and pincode
+with getter and setter. Prove that Person class is now mutable
+Program:
+class Address
+{
+public String city;
+public int pincode;
+public Address(String city, int pincode)
+{
+this.city = city;
+this.pincode = pincode;
+}
+public void setCity(String city)
+{
+this.city = city;
+}
+public void setpincode(int pincode)
+{
+this.pincode = pincode;
+}
+public String getCity()
+{
+return city;
+}
+public int getpincode()
+{
+return pincode;
+}
+public String toString()
+{
+return city+"-"+pincode;
+}
+}
+final class Person
+{
+private final String FirstName;
+
+private final String LastName;
+private Address address;
+public Person(String FirstName, String LastName, Address address)
+{
+this.FirstName = FirstName;
+this.LastName = LastName;
+this.address = address;
+}
+public String getFirstName()
+{
+return FirstName;
+}
+public String getLastName()
+{
+return LastName;
+}
+public Address getAddress()
+{
+return address;
+}
+public String toString()
+{
+return "Details : "+FirstName+" "+LastName+"\nAddress : "+address+"\n";
+}
+}
+public class Assgn3c
+{
+public static void main(String args[])
+{
+Address address = new Address("Navi Mumbai",400705);
+Person p1 = new Person("Aditi","Patil",address);
+System.out.println(p1);
+p1.getAddress().setpincode(400706);
+System.out.println(p1);
+}
+}
+Output:
+opps-17@opps17-All-Series:~$ cd /home/opps-17/Desktop/UEC2022303
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ javac Assgn3c.java
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ java Assgn3c
+Details : Aditi Patil
+Address : Navi Mumbai-400705
+Details : Aditi Patil
+Address : Navi Mumbai-400706
+
+d)Modify the classes such that Person becomes immutable again
+Program:
+class Address
+{
+public String city;
+public int pincode;
+public Address(String city, int pincode)
+{
+this.city = city;
+this.pincode = pincode;
+}
+public void setcity(String city)
+{
+this.city = city;
+}
+public void setpincode(int pincode)
+{
+this.pincode = pincode;
+}
+public String getcity()
+{
+return city;
+}
+public int getpincode()
+{
+return pincode;
+}
+public String toString()
+{
+return city+"-"+pincode;
+}
+}
+final class Person
+{
+private final String FirstName;
+private final String LastName;
+private Address address;
+public Person(String FirstName, String LastName, Address address)
+{
+this.FirstName = FirstName;
+this.LastName = LastName;
+this.address = new Address(address.getcity(),address.getpincode());
+}
+
+public String getFirstName()
+{
+return FirstName;
+}
+public String getLastName()
+{
+return LastName;
+}
+public Address getAddress()
+{
+return new Address(address.getcity(),address.getpincode());
+}
+public String toString()
+{
+return "Details : "+FirstName+" "+LastName+"\nAddress : "+address+"\n";
+}
+}
+public class Assgn3d
+{
+public static void main(String args[])
+{
+Address address = new Address("Navi Mumbai",400705);
+Person p1 = new Person("Aditi","Patil",address);
+System.out.println(p1);
+p1.getAddress().setpincode(400706);
+System.out.println(p1);
+}
+}
+
+Output:
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ cd /home/opps-17/Desktop/UEC2022303
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ javac Assgn3d.java
+opps-17@opps17-All-Series:~/Desktop/UEC2022303$ java Assgn3d
+Details : Aditi Patil
+Address : Navi Mumbai-400705
+Details : Aditi Patil
+Address : Navi Mumbai-400705
