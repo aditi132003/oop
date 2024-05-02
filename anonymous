@@ -1,0 +1,64 @@
+interface Age
+{
+public void display1();
+public void display2();
+}
+class Assgn1
+{
+public static void main(String args[])
+{
+Age a = new Age()
+{
+public void display1()
+{
+System.out.println("Age of First Candidate");
+}
+public void display2()
+{
+System.out.println("Age of Second Candidate");
+}
+};
+a.display1();
+a.display2();
+}
+}
+
+
+
+
+
+
+class Foodies
+{
+public void panipuri()
+{
+System.out.println("But I love Pani Puri");
+}
+public void vadapav()
+{
+System.out.println("But I love vadapav");
+}
+
+}
+class Assgn2
+{
+public static void main(String args[])
+{
+Foodies fo = new Foodies()
+{
+public void panipuri()
+{
+System.out.println("I am health concsious");
+}
+public void vadapav()
+{
+System.out.println("I hate burger");
+}
+};
+fo.panipuri();
+fo.vadapav();
+Foodies fo1 = new Foodies();
+fo1.panipuri();
+fo1.vadapav();
+}
+}
