@@ -1,0 +1,66 @@
+6)Create a set of movies (Movie class having name and imdb rating). Print the
+list of movies in the ascending order of their names. Now print the movies in
+descending order of imdb rating, using comparator interface.
+PROGRAM:
+import java.util.*;
+class Movie{
+String name;
+double IMDB;
+Movie(String name,double IMDB)
+{
+this.name=name;
+this.IMDB=IMDB;
+}
+public String toString()
+{
+return name+" "+IMDB;
+}
+String getName()
+{
+return name;
+}
+double getImdb()
+{
+return IMDB;
+}
+}
+class TreeSett
+{
+public static void main(String [] args)
+{
+Movie m1=new Movie("YJHD",9.7);
+Movie m2=new Movie("DIL DHADAKNE DO",9.3);
+Movie m3=new Movie("taare zamene par",8.9);
+Movie m4=new Movie("ABCD",8.6);
+Movie m5=new Movie("MISSION MANGAL",8.4);
+TreeSet<Movie> t1=new<Movie>TreeSet(new NameComparator());
+t1.add(m1);
+t1.add(m2);
+t1.add(m3);
+t1.add(m4);
+t1.add(m5);
+System.out.println(t1);
+TreeSet<Movie> t2=new<Movie> TreeSet(new RatingComparator());
+
+t2.addAll(t1);
+System.out.println(t2);
+}
+}
+class NameComparator implements Comparator
+{
+public int compare(Object Obj1,Object Obj2)
+{
+Movie o1=(Movie)Obj1;
+Movie o2=(Movie)Obj2;
+return o1.getName().compareTo(o2.getName());
+}
+}
+class RatingComparator implements Comparator
+{
+public int compare(Object Obj1,Object Obj2)
+{
+Movie d1=(Movie)Obj1;
+Movie d2=(Movie)Obj2;
+return -Double.compare(d1.getImdb(),d2.getImdb());
+}
+}
