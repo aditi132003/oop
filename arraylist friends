@@ -1,0 +1,33 @@
+Create a list of names of your friends. Check if a name of
+friend is present in the list. Remove a name from the list
+and add another. Print the list to see where the added
+name is appearing in the list.
+
+Code :
+import java.uƟl.*;
+class Assignment7
+{
+public staƟc void main(String[] args)
+{
+ArrayList arr=new ArrayList();
+arr.add("Saniya");
+arr.add("Ramu");
+arr.add("Sadaf");
+arr.add("Vaibhavi");
+arr.add("Bhargavee");
+System.out.println(arr);
+
+System.out.println(arr.contains("Saniya"));
+System.out.println(arr.contains("Vaishnavi"));
+arr.remove("Bhargavee"); arr.add("Anjum");
+System.out.println(arr);
+
+LinkedList ss=new LinkedList();
+ss.add("Rahul");
+ss.add("Raj");
+ss.add("Sameer");
+System.out.println("Linked list:"+ss);
+arr.add(0,ss);
+System.out.println("arraylist and Linked list:"+arr);
+}
+}
