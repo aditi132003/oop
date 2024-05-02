@@ -1,0 +1,92 @@
+before overriding
+
+class Employee
+{
+String fname;
+String lname;
+String phoneno;
+Employee(String fname,String lname,String phoneno)
+{
+
+this.fname=fname;
+this.lname=lname;
+this.phoneno=phoneno;
+}
+
+}
+class Employee3
+{
+public static void main(String args[])
+{
+Employee e1=new Employee("Aditi","Patil","932");
+Employee e2=new Employee("Aditi","Patil","932");
+Employee e3=new Employee("Saniya","Patel","973");
+System.out.println(e1.toString());
+System.out.println(e2.toString());
+System.out.println(e3.toString());
+boolean result1=e1.equals(e2);
+boolean result2=e2.equals(e3);
+boolean result3=e3.equals(e1);
+
+System.out.println(result1);
+System.out.println(result2);
+System.out.println(result3);
+}
+}
+
+
+
+
+after overriding
+
+class Employee
+{
+String fname;
+String lname;
+String phoneno;
+Employee(String fname, String lname, String phoneno)
+{
+this.fname=fname;
+this.lname=lname;
+this.phoneno=phoneno;
+}
+public String toString()
+{
+return fname+" "+lname+" "+phoneno;
+}
+public boolean equals(Object Obj)
+{
+if(this==Obj)
+return true;
+if(Obj instanceof Employee)
+{
+Employee e=(Employee) Obj;
+if(fname.equals(e.fname)&&lname.equals(e.lname)&&phoneno.equals(e.phoneno))
+{
+return true;
+}
+
+else
+{
+return false;
+}
+}
+return false;
+}
+}
+class Employee3
+{
+public static void main(String []args)
+{
+Employee e1=new Employee("Aditi","Patil","932");
+Employee e2=new Employee("Aditi","Patil","932");
+Employee e3=new Employee("Saniya","Patel","973");
+System.out.println(e1);
+System.out.println(e2);
+System.out.println(e3);
+System.out.println(e1.equals(e2));
+System.out.println(e1.equals(e3));
+System.out.println(e1.equals("ABC"));
+System.out.println(e1.equals(null));
+}
+}
