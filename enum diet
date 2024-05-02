@@ -1,0 +1,76 @@
+5) Write a program to declare Enum representing days of week. Add fields to
+indicate day name and number. Print the days using values(). Implement
+abstract method to return diet plan for each day.
+Program:-
+enum WEEK
+{
+MON(1,"Monday")
+{
+public String diet()
+{
+return "PROTEINOUS FOOD";
+}
+},
+TUE(2,"Tuesday")
+{
+public String diet()
+{
+return "VEGAN FOOD";
+}
+},
+WED(3,"Wednesday")
+{
+public String diet()
+{
+return "FRUITS AND FIBRES";
+}
+},
+THU(4,"Thursday")
+{
+public String diet()
+{
+return "PULSES AND CEREALS";
+}
+},
+FRI(5,"Friday")
+{
+public String diet()
+{
+return "LOW CARBS";
+}
+},
+SAT(6,"Saturday")
+{
+public String diet()
+
+{
+return "HIGH VITAMINS";
+}
+},
+SUN(7,"Sunday")
+{
+public String diet()
+{
+return "FUN DAY";
+}
+};
+String name;
+int num;
+WEEK(int num, String name)
+{
+this.name=name;
+this.num=num;
+}
+public abstract String diet();
+};
+class DietEnum
+{
+public static void main(String args[])
+{
+WEEK[] w=WEEK.values();
+for(WEEK w1:w)
+{
+System.out.println(w1.num+" "+w1.name+" "+w1.diet());
+}
+}
+}
