@@ -1,0 +1,43 @@
+Given a stream of amplitude values of a
+sampled signal (as a List), filter out the samples
+having amplitudes above and below the
+threshold values (upper threshold: 4.5V and
+lower threshold: 0.5V). These filtered samples
+are to be passed through the mulƟplier system
+(mulƟplicaƟon factor = 2). Create a list of signal
+values at the output of the mulƟplier system.
+Find min and max amplitudes in the result.
+Example: Input:
+{0.45, 1.0, 2.2, 3.5, 4.7, 5.0, 0.21, 1.2} Output:
+{2.0, 4.4, 7.0, 2.4} Min: 2.0, Max: 7.0
+
+Code :
+import java.uƟl.*;
+import java.uƟl.Arrays;
+import
+
+java.uƟl.stream.*; class
+StreamDemo
+{
+public staƟc void main(String args[])
+{
+List<Double> amp= Arrays.asList(new Double[]
+{0.45,1.0,2.2,3.5,4.7,5.0,0.21,1.2});
+System.out.println("Input : "+amp);
+Double ut=4.5;
+Double lt=0.5;
+int mul=2;
+List<Double> output = amp.stream().
+filter(a-> a>=lt && a<=ut).
+map(a-> a*mul).collect(Collectors.toList());
+System.out.println("Output : "+ output);
+double
+minAmp=output.stream().min(Double::compare).get();
+double
+maxAmp=output.stream().max(Double::compare).get();
+System.out.println("Minimum Amplitude :"+minAmp);
+System.out.println("Maximum
+Amplitude :"+maxAmp);
+
+}
+}
