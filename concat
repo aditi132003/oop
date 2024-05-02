@@ -1,0 +1,27 @@
+4)Write a program to concatenate two Strings eg- “hello” and “world” and
+check if the result of concatenation equals “helloworld” (using.equals() and ==).
+Trim the strings to get the two strings back.
+Program:-
+class concat{
+public static void main(String args[]){
+String s1=new String("Aditi");
+String s2=new String(" Patil");
+String s3=new String("Aditi Patil");
+String s4=s1.concat(s2);
+System.out.println(s4);
+if(s3.equals(s4)){
+System.out.println("s3 and s4 are equal by .equals() method");
+}
+else{
+System.out.println("s3 and s4 are not equal by .equals() method");
+}
+if(s3==s4){
+System.out.println("s3 and s4 are equal by equality operator");
+}
+else{
+System.out.println("s3 and s4 are not equal by equality operator");
+}
+System.out.println(s4.substring(0,s1.length()));
+System.out.println(s4.substring(s1.length()));
+}
+}
